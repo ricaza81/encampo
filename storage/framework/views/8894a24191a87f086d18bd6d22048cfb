@@ -1,0 +1,465 @@
+ <body class="hold-transition skin-blue sidebar-mini">
+
+<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Únete a la Experiencia Agronielsen</h3>
+     </div>
+         <div class="modal-body" align="center">
+            <h4>Trabaja en equipo</h4>
+            Todo en un mismo lugar.
+          <center>  <img src="https://www.agronielsen.com/encampo/public/imagenes/paso-paso.png" width="571" height="152"> </center>
+     </div>
+         <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+     </div>
+      </div>
+   </div>
+</div>
+
+
+<div class="" style="min-height:0px !important;">
+    <div class="">
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>AGRN</b></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><img src="https://www.agronielsen.com/encampo/public/imagenes/sdclogo.png" style="height: auto; width: auto; max-width: 242px; max-height: 44px;"></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+            <div class="navbar-custom-menu">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown messages-menu"> 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="hidden-xs">Soporte</span>
+                          <i class="ion-chevron-down"></i>
+                          <span class="label label-success"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="header">Tickets de soporte</li>
+                          <li>                  
+                             <ul class="menu"> 
+                              <li>
+                                    <a href="<?php echo e(asset('customer/tickets')); ?>/<?=$usuario->id?>" style="color:#000000">
+                                      <div class="pull-left"> 
+                                      <h4>Ver mis tickets</h4>
+                                      </div>
+                                    </a>
+                                    <a href="<?php echo e(asset('customer/ticket_new')); ?>" style="color:#000000">
+                                      <div class="pull-left"> 
+                                      <h4>Solicitar soporte</h4>
+                                      </div>
+                                    </a> 
+                              </li>
+                            </ul>
+                          </li>
+                      </ul>
+                    </li>
+            <ul class="nav navbar-nav">
+               <li class="dropdown messages-menu">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                    <span class="label label-success">4</span>
+                 </a>
+                  <ul class="dropdown-menu">
+                    <li class="header">4 Noticias Recientes</li>     
+                      <li class="footer">
+                        <a href="https://www.agronielsen.com/blog/blog"target="_blank">Ver todas las noticias</a>
+                      </li>
+                  </ul>
+               </li>
+    
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   <?php if($usuario->imagenurl=="")
+                        { $usuario->imagenurl="https://www.agronielsen.com/encampo/storage/fotografias/userimagen-18.png"; } 
+                      ?>
+                   <?=  $usuario->nombres;  ?>
+                </a>
+                <ul class="dropdown-menu">
+
+                  <li class="user-header">
+                               <?php if($usuario->imagenurl==""){ $usuario->imagenurl="https://www.agronielsen.com/encampo/public/imagenes/avatar.jpg"; }  ?>
+               <img src="https://www.agronielsen.com/encampo/public/imagenes/avatar.jpg"  alt="User Image"  style="width:50px;height:50px;">
+                    <p>
+                     Usuario AGRONIELSEN (<?=$usuario->id;?>)
+                      <small>Miembro desde:</small><?=$usuario->created_at;?></small>
+                    </p>
+                  </li>
+
+                  <li class="user-body">
+                    <div class="col-xs-6 text-center">
+                      <a href="javascript:void(0);" onclick="mostrarficha(<?= $usuario->id; ?>);">Perfil</a>
+                    </div>
+                    <div class="col-xs-6 text-center">
+                      <a href="<?php echo e(asset('seguimientovisitasplaneadas')); ?>">Visitas Pendientes</a>
+                    </div>
+                  </li>
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="javascript:void(0);" onclick="mostrarficha(<?= $usuario->id; ?>);"class="btn btn-default btn-flat">Perfil</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="<?php echo e(asset('logout')); ?>" class="btn btn-default btn-flat">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+
+
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning"><?=$events_day?></span>
+                        
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!--<li class="header">Tienes <?=$events_day?> Actividades por ejecutar.</li>-->
+                        <li class="header">Ver visitas técnicas pendientes por ejecutar.</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <li><!-- start notification -->
+                                    <a href="<?php echo e(asset('seguimientovisitasplaneadas')); ?>">
+                                        <i class="fa fa-users text-aqua"></i> Ver Reporte
+                                    </a>
+                                </li><!-- end notification -->
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">Te ayúdamos en tu seguimiento.</a></li>
+                    </ul>
+                </li>
+
+            <!--  <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+
+
+
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      
+         <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+                
+                
+                <?php if($usuario->imagenurl==""){ $usuario->imagenurl="https://www.agronielsen.com/encampo/public/imagenes/avatar.jpg"; }  ?>
+               <img src="https://www.agronielsen.com/encampo/public/imagenes/avatar.jpg"  alt="User Image"  style="width:50px;height:50px;">
+             
+            </div>
+            <div class="pull-left info">
+              <p>Hola: <?=  $usuario->nombres;  ?></p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+               <br/> <a href="#"><i class="fa fa-circle text-success"></i> Perfil: <?=  $usuario->tipo($usuario->tipoUsuario);  ?></a>
+               <br/> <a href="#"><i class="fa fa-circle text-success"></i> Perfil: <?=  $usuario->empresa->nombreempresa;  ?></a>
+            </div>
+          </div>
+          <!-- search form -->
+        <!--  <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Buscar...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>-->
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MENU</li>
+            
+               <li class="treeview bg-green">
+              <a href="#">
+                <i class="fa fa-fw fa-dashboard"></i> <span>MANUAL</span>  <span class="pull-right-container">
+                  <small class="label pull-right bg-yellow">nuevo</small>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+  
+                 <li class="active"><a href="https://docs.google.com/presentation/d/e/2PACX-1vTt3pYzhZl0SAZMpeI6j6_qcyFFR-Uzua7t7PC6gx5wlRS6jkpKQDn-Hj0REaVgCdgXU2x3VOJCsClP/pub?start=true&loop=true&delayms=60000&slide=id.gcb9a0b074_1_0" target="_blank" ><i class="fa fa-circle-o"></i>Manual de Uso</a></li>
+                
+                
+              </ul>
+            </li>
+            
+           <li class="treeview">
+              <a href="#">
+                <i class="fa fa-desktop"></i> <span>Empresa</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+                            
+              <ul class="treeview-menu">
+                <?php
+                 if ($usuario->tipoUsuario==1) { ?>
+                <li><a href="<?php echo e(asset('detalle_empresa')); ?>" ><i class="fa fa-circle-o"></i>Detalles</a></li>
+                <?php } ?>
+              </ul>
+            </li> 
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa  fa-users"></i> <span>EQUIPO</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                
+
+                <?php
+                 if ($usuario->tipoUsuario==1) { ?>
+                <li><a href="<?php echo e(asset('form_nuevo_usuario')); ?>"><i class="fa fa-circle-o"></i>Añadir miembro </a></li>
+                <li class="active"><a href="<?php echo e(asset('form_calendario_admin')); ?>" ><i class="fa fa-circle-o"></i>Agenda</a></li>
+                <?php } ?>
+                <?php
+                 if ($usuario->tipoUsuario==2) { ?>
+                 <li class="active"><a href="<?php echo e(asset('listado_comercial')); ?>" ><i class="fa fa-circle-o"></i>Mi perfil</a></li>
+                <?php } ?>
+                <?php
+                 if ($usuario->tipoUsuario==3) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_usuario')); ?>" ><i class="fa fa-circle-o"></i>Añadir miembro </a></li>
+                
+
+                <?php } ?>
+
+               <!-- <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(2,1);" ><i class="fa fa-circle-o"></i>Publicaciones</a></li> -->
+
+              </ul>
+            </li>
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-cog"></i> <span>PRODUCTOS</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                                <?php
+                 if ($usuario->tipoUsuario==1) { ?>
+                <li><a href="<?php echo e(asset('reporteproductos')); ?>"><i class="fa fa-circle-o text-yellow"></i>Ver Portafolio</a></li>
+                                <li><a href="<?php echo e(asset('formnuevoproductoempresa')); ?>"><i class="fa fa-circle-o"></i>Crear Producto</a></li>
+                      <?php } ?>
+                   </ul>
+            </li>  
+
+
+            
+
+          <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-leaf"></i> <span>AGRICULTORES</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+             
+              <?php
+                 if ($usuario->tipoUsuario==1 ) { ?>
+                <li><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li><a href="<?php echo e(asset('listado_todos_prospectos_comercial')); ?>" ><i class="fa fa-circle-o text-aqua"></i>Agricultores</a></li>
+
+               <?php }?>
+               <?php
+                 if ($usuario->tipoUsuario==2) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_comercial')); ?>" ><i class="fa fa-circle-o"></i>Mis Agricultores</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Mapa</a></li>
+               <?php }?>
+              <?php
+                 if ($usuario->tipoUsuario==3 ) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_zona')); ?>" ><i class="fa fa-circle-o"></i>Agricultor</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Mapa</a></li>
+                <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(3,1);" ><i class="fa fa-circle-o"></i>Exportar BD</a></li>
+               <?php }?>
+
+              </ul>
+            </li>
+
+           <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-flag"></i> <span>FINCAS</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+             
+              <?php
+                 if ($usuario->tipoUsuario==1 ) { ?>
+                <li><a href="https://www.agronielsen.com/encampo/public/form_nueva_finca_agricultor_nativo" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li><a href="<?php echo e(asset('listado_fincas_agricultores')); ?>" ><i class="fa fa-circle-o"></i>Fincas</a></li>
+
+                <li><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Geoposición</a></li>
+                <li><a href="<?php echo e(asset('fotovisitastecnicas')); ?>" ><i class="fa fa-circle-o"></i>Fotos</a></li>
+              
+               <?php }?>
+               <?php
+                 if ($usuario->tipoUsuario==2) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>"><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_comercial')); ?>"><i class="fa fa-circle-o"></i>Mis Agricultores</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>"><i class="fa fa-circle-o"></i>Mapa</a></li>
+               <?php }?>
+              <?php
+                 if ($usuario->tipoUsuario==3 ) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_zona')); ?>" ><i class="fa fa-circle-o"></i>Agricultor</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Mapa</a></li>
+                <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(3,1);" ><i class="fa fa-circle-o"></i>Exportar BD</a></li>
+               <?php }?>
+
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-map-marker"></i> <span>VISITAS</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+             
+              <?php
+                 if ($usuario->tipoUsuario==1 ) { ?>
+              <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>"><i class="fa fa-circle-o"></i> Crear Visita Guiada </a></li>
+               <?php }?>
+               
+                <?php
+                 if ($usuario->tipoUsuario==1 ) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nueva_visita_agricultor_creado')); ?>"><i class="fa fa-circle-o text-red"></i> Crear Visita </a></li>
+               <?php }?>
+                <?php
+                 if ($usuario->tipoUsuario==1 ) { ?>
+                <li class="active"><a href="<?php echo e(asset('reportevisitastecnicas')); ?>"><i class="fa fa-circle-o"></i> Reporte </a></li>
+                <li class="active"><a href="<?php echo e(asset('seguimientovisitasplaneadas')); ?>"><i class="fa fa-circle-o"></i> Visitas Pendientes </a></li>
+               <li><a href="<?php echo e(asset('mapa-visitastecnicas')); ?>" ><i class="fa fa-circle-o"></i>Geoposición</a></li>
+               <?php }?>
+               
+               <?php
+                 if ($usuario->tipoUsuario==2) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_comercial')); ?>" ><i class="fa fa-circle-o"></i>Mis Agricultores</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Mapa</a></li>
+               <?php }?>
+              <?php
+                 if ($usuario->tipoUsuario==3 ) { ?>
+                <li class="active"><a href="<?php echo e(asset('form_nuevo_prospecto')); ?>" ><i class="fa fa-circle-o"></i> Añadir </a></li>
+                <li class="active"><a href="<?php echo e(asset('listado_prospectos_zona')); ?>" ><i class="fa fa-circle-o"></i>Agricultor</a></li>
+                <li class="active"><a href="<?php echo e(asset('geo-marketing')); ?>" ><i class="fa fa-circle-o"></i>Mapa</a></li>
+                <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(3,1);" ><i class="fa fa-circle-o"></i>Exportar BD</a></li>
+               <?php }?>
+
+              </ul>
+            </li>
+            
+     <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-dashboard"></i> <span>FOTOS</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+  
+                 <li class="active"><a href="<?php echo e(asset('fotovisitastecnicas')); ?>" ><i class="fa fa-circle-o"></i> Banco de Fotos </a></li>
+                
+              </ul>
+            </li>
+
+
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-dashboard"></i> <span>ANALÍTICA</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+  
+                 <li class="active"><a href="<?php echo e(asset('listado_graficas')); ?>" ><i class="fa fa-circle-o"></i> Gestión Empresa</a></li>
+                  <li class="active"><a href="<?php echo e(asset('listado_graficas_asesor')); ?>" ><i class="fa fa-circle-o"></i> Gestión Asesores</a></li>
+                
+              </ul>
+            </li>
+     
+            
+              <li class="treeview bg-green">
+              <a href="#">
+                <i class="fa fa-fw fa-dashboard"></i> <span>MERCADOS</span>  <span class="pull-right-container">
+                  <small class="label pull-right bg-yellow">nuevo</small>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+  
+                 <li class="active"><a href="<?php echo e(asset('censodane')); ?>" ><i class="fa fa-circle-o"></i> Almacenes </a></li>
+                 <li class="active"><a href="<?php echo e(asset('censodanefull')); ?>" ><i class="fa fa-circle-o"></i> Ver Censo </a></li>
+                 <li class="active"><a href="<?php echo e(asset('mapping')); ?>" ><i class="fa fa-circle-o"></i> Ver Mapping </a></li>
+                
+              </ul>
+            </li>
+
+                 <li class="treeview bg-green">
+              <a href="<?php echo e(asset('form_nueva_finca_aguacate')); ?>">
+                <i class="fa fa-fw fa-dashboard"></i> <span>MÓDULO AGUACATE</span>  <span class="pull-right-container">
+                  <small class="label pull-right bg-yellow">nuevo</small>
+                </span>
+              </a>
+              
+            </li>
+ 
+</ul>
+
+          
+        
+
+
+
+
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+
+     
+
+
+     
+    </div><!-- ./wrapper -->
+     
+
+
+
+            <style>
+                .fa-desktop {
+                             color: #009933;
+                            }
+                                                
+                 .fa-circle-o {
+                               color: #fff;
+                              }
+                 .skin-blue .treeview-menu>li>a {
+                            color: #fff;
+                              }
+                 .skin-blue .sidebar a {
+                            color: #fff;
+                             }
+                .fa-fw {
+                             color: #009933;
+                            }
+                            
+                .bg-green:hover {
+                             background-color: #fff;
+                            }
+
+                .main-header .navbar-custom-menu, .main-header .navbar-right {
+    float: left;
+}
+                                
+            </style>
+
+
+
+   </body>
+</html>

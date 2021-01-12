@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "746952913108",
+    "firebase_url": "https://agronielsen-1534531171304.firebaseio.com",
+    "project_id": "agronielsen-1534531171304",
+    "storage_bucket": "agronielsen-1534531171304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746952913108:android:1b4b530a312b061b",
+        "android_client_info": {
+          "package_name": "com.agronielsen.encampo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746952913108-i9dkr8990efms39dtqcf02taemo7h9dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6-b4gcWoZJPzj-7dtYmJ01HK3R5Yd7m0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

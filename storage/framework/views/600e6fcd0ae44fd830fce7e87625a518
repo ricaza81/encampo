@@ -1,0 +1,560 @@
+<?php $__env->startSection('htmlheader_title'); ?>
+  Home
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('main-content'); ?>
+ 
+<body>
+
+
+
+  <?php
+ if ($msj==!"") { ?>
+           <div ><label style='background-color: #E9FCFA;
+border: 1px dashed #006600;
+padding: 8px;
+margin-bottom: 10px; font-family: Arial; font-size:12px; width:100%'><?php  echo $msj; ?>  </label>  </div>
+<?php } ?>
+
+<div class="col-md-3">
+<div class="info-box bg-green">
+            <span class="info-box-icon"><i class="glyphicon glyphicon-scale"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Hectareas Total Agricultores</span>
+              <span class="info-box-number"><?php echo number_format($areas, 0, ',', '.');?> (Hectareas)</span>
+          
+
+              <div class="progress">
+                <div class="progress-bar" style="width: <?= ($areas/2500)*100; ?>%"></div>
+              </div>
+               <!--   <span class="progress-description">
+                    Meta: 2500 Ha en el Trimestre <br/>
+                    Fecha Inicio: Miércoles 1 Feb 2017 <br/>
+                    Fecha Cierre: Lunes 1 Mayo 2017
+                  </span>-->
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+</div>
+
+
+<div class="col-md-9">
+    <div class="box box-info" style="background:#4267b2 !important">
+        <div class="box-header with-border" >
+             <div class="col-md-4" >
+                      <h3 class="box box-info"><td><span class="label label-info" style="font-size:15px"><img class="aligncenter size-full wp-image-2701" src="https://www.agronielsen.com/encampo/public/imagenes/gif-icons/animat-piechart-color.gif" alt="dato de mercado" width="80" height="80">Dato de Mercado</span></td></h3>
+                </div>
+       
+        <div class="col-md-8 text-left" style="color:#fff">
+            <div class="row docs-premium-template">  
+                
+                          <div class="info-box-text" style="color:#fff"><br/>Según el censo agrícola las areas<br/>sembradas de <?=$nombrecultivo;?> en <?=$nombredepto;?>
+                          
+                          <span class="info-box-number">son: <?php echo number_format($areas_totales_sembradas, 0, ',', '.')." ".'(Hectareas)';?>
+                          </span>
+                         
+                            <a class="btn btn-default btn-sm" href="<?php echo e(asset('mapping')); ?>" target="_blank" style="border: 0px; box-shadow: none; color: rgb(243, 156, 18); font-weight: 600; background: rgb(255, 255, 255)">Ver Censo
+                            </a>
+                         </div>
+                </div>
+            </div>
+             </div>
+        </div>
+              
+        
+          
+
+    
+    
+    
+
+</div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-user"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Número de <br/>Agricultores</span>
+              <span class="info-box-number"><?=$cant_agricultores;?></small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+           <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="glyphicon glyphicon-ok"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Número de<br/>Fincas</span>
+              <span class="info-box-number"><?=$cant_fincas;?></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-calendar"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Número de <br/> Visitas</span>
+              <span class="info-box-number"><?=$cant_visitas;?></span>
+            
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+     
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="glyphicon glyphicon-refresh"></i></span>
+
+            <div class="info-box-content">
+              <br/>
+              
+                 <button type="button" class="btn btn-block btn-primary btn-flat" onclick="window.location.href='home'">Actualizar</button>
+            </div>
+
+        </div>
+        <!-- /.col -->
+   </div>
+   </div>
+
+
+
+
+<div class="box box-primary">
+     <div class="box-body">              
+       <table id="lista_prospectos" class="display responsive no-wrap" cellspacing="0" width="100%">
+     
+        <thead>
+            <tr>
+               
+                <!--1--><th style="width:10px">Agricultor</th>
+                <!--2--><th style="width:10px">Departamento</th>
+                <!--3--><th style="width:10px">Finca</th>
+                <!--4--><th style="width:10px">Cultivo</th>
+                <!--5--><th style="width:10px">Hectareas</th>
+                <!--6--><th style="width:5px">Lat</th>
+                <!--7--><th style="width:5px">Lon</th>
+                <!--8--><th style="width:10px">Clima</th>
+                <!--9--><th style="width:10px">Pronostico</th>
+                <!--10--><th>Ingresado por:</th>
+                <!--11--><th>Añadido el</th>
+                <!--12--><th>Id:</th>
+            </tr>
+        </thead>
+            <?php
+                 $subtotal_numero_hectareas=0;
+                     foreach($fincas as $finca){  
+                     $subtotal_numero_hectareas+=($finca->hectareas); ?>
+                <tr role="row" class="odd"  >
+                      <!--1--NombreAgricultor-->
+                        <td><?=$finca->delagricultor->agricultor; ?></td>
+                        <!--2--Departamento-->
+                        <td><?=$finca->departamento->departamento; ?></td>
+                        <!--3--NombreFinca-->
+                        <td><?=$finca->finca; ?></td>
+                      <!--4--CultivoFinca-->
+                        <td><?=$finca->cultivo_finca->cultivo; ?></td>
+                      <!--5--NoHectareas-->
+                        <td><?=$finca->hectareas; ?></td>
+                      <!--6--Ingresado-Por-->
+                        <td><?=$finca->latitud; ?></td>
+                      <!--7--Ingresado-Por-->
+                        <td><?=$finca->longitud; ?></td>
+                     <!-- <td><a href="javascript:void(0);"onclick="mostrarvisita(<?= $finca->id; ?>);" style="display:block"><h4><span class="label label-warning" >Ver variables meteorologicas</span></h4></a>          
+                      </td>-->
+                    <!--8--Ingresado-Por-->
+                        <td><a href="javascript:void(0);"onclick="mostrarmodal(<?=$finca->id?>);" style="display:block"><h4><span class="label label-warning" style="background-color:#76a92b!important;" >Ver variables meteorologicas</span></h4></a>          
+                      </td>
+                       <td><a href="<?=$finca->urlreport?>" target="_blank" style="display:block"><h4><span class="label label-warning" >Pronostico</span></h4></a>          
+                      </td>
+
+                      <!--9--Ingresado-Por-->
+                        <td><?=$finca->ingresado_por->nombres; ?></td>
+                      <!--10--Fecha_Creacion-->
+                      <td><?=$finca->created_at->diffForHumans(); ?></td>
+                       <!--11-Id-->
+                       <td><?=$finca->id; ?></td> 
+               </tr>
+
+          <?php } ?>      
+       
+      </table>
+      </div>
+
+<br/>
+
+    <div class="box box-primary">
+      <div class="box-body col-xs-12">
+
+        <h3>Total Hectareas: <?php echo number_format($subtotal_numero_hectareas, 0, ',', '.');?></h3>
+           
+       </div>   
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModalExito" role="dialog">
+  <div class="modal-dialog"> <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4> 
+      </div>
+
+        <!--<input class="form-control" style="font-size:14px" type="text" placeholder="" id="fincaLat2" name="fincaLat2">
+          <input class="form-control" style="font-size:14px" type="text" placeholder="" id="fincaLon" name="fincaLon">-->
+
+      <div class="box box-widget widget-user" style="margin-top: -10px;margin-left:0px;text-align: left;">
+                 
+          <div class="">
+
+            <!--<iframe width="570" id="historyframe" name="historyframe" height="380" src="" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+
+        </div>
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header bg-aqua-active" style="height:103px;padding-top:7px;">
+            <h3 class="widget-user-username" style="line-height: 15px;"></h3>
+                <span style="text-align: left;font-size:12px; font-weight: 500;line-height:25px;color:#fff;letter-spacing:0px">
+                    <?=$date->format('g:i A').", ".($date->format('M'))." ".$date->day;?>
+                    </span><br>
+                <span id="ciudad" style="font-size:22px;float: left; color: #fff;font-weight: 700;"></span><span style="color: #fff;"> ,
+                </span>
+
+                <span id="finca_name" style="color: #fff;padding-left:5px;font-weight: 700;font-size:22px">
+                </span>
+                <span style="color: #fff;"> ,
+                </span>
+
+                <span id="pais" style="color: #fff;padding-left:5px;font-weight: 700;font-size:22px">
+                </span><br>
+               
+                <span id="temp_actual" style="color: #fff;padding-left:5px;font-weight: 700;font-size:24px">
+                </span><span style="color: #fff;padding-left:5px;font-weight: 700;font-size:24px">&#8451;</span>
+
+                
+              <!--  <span style="float: left; color: #fff;">Variables &amp; CLIMA</span></h3>-->
+            
+        </div>
+      
+         <div class="widget-user-image">
+
+
+           <!-- <img class="" id="icon" src="" alt="Tiempo" style="border: 0px solid #fff;width:123px;padding-right: 16px;padding-top: 6px;margin-bottom:-32px;margin-left: 16px;"/><br>-->
+            <span id="weather" style="color:#ffffff;font-size: 13px;"></span>
+        </div>
+        <div class="box-footer" style="margin-bottom: 10px;/* margin-bottom: 10px; */width: 100%;padding:0;border: 7px solid #eee;">
+
+          <form  id=""  method="post"  action="<?php echo e(url('/agregar_nueva_medicion_finca')); ?>" class="" enctype="multipart/form-data" >
+
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+           
+              <input type="hidden" id="id_finca_input" name="id_finca_input">
+            <input type="hidden" id="nombre_finca_input" name="nombre_finca_input">
+            <input type="hidden" id="url_report_pronostico" name="url_report_pronostico">
+             <input type="hidden" name="tempactual_input" id="tempactual_input" style="color: #000000;">
+            
+           
+                <div class="" data-swiper-parallax="-500" style="margin-top:0px;">
+                    <div class="day-wethear-item">
+                        <h5 class="description-header">
+                         <span id="temp_max" name="temp_max">                       
+                          </span> &#8451;
+                        </h5>
+                          <input type="hidden" name="temp_max_input" id="temp_max_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">T.Max</span>
+                    </div>
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="temp_min"></span> &#8451;</h5>
+                        <input type="hidden" name="temp_min_input" id="temp_min_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">T.Min</span>
+                    </div>
+                    <div class="day-wethear-item">
+                        <div class="col-xs-3" style="float: left;">
+                            <img class="responsive" src="<?php echo e(asset('/css/clima/iconsoilt.png')); ?>" alt="Suelo" style="width:39px;margin-right:-18px"/>
+                        </div>
+                        <h5 class="description-header"><span id="soilTemperature"></span> &#8451;</h5>
+                         <input type="hidden" name="soilTemperature_input" id="soilTemperature_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">T.Suelo</span>
+                    </div>
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="humidity"></span> %</h5>
+                         <input type="hidden" name="humidity_input" id="humidity_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">Hum.Rel</span>
+                    </div>
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="wind"></span> m/s</h5>
+                        <input type="hidden" name="wind_input" id="wind_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">V.Viento</span>
+                    </div>                    
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="pressure"></span> hPa</h5>
+                        <input type="hidden" name="pressure_input" id="pressure_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">Presion</span>
+                    </div>
+
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="rain"></span> mm</h5>
+                        <input type="hidden" name="rain_input" id="rain_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">Precip.</span>
+                    </div>
+                     <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="uvi"></span> </h5>
+                        <input type="hidden" name="uvi_input" id="uvi_input" style="color: #000000;">
+                        <span class="description-text" style="color: #000000;">UV Index</span>
+                    </div>
+                    <div class="day-wethear-item">
+                        <h5 class="description-header"><span id="pop"></span> %</h5>
+                        <span class="description-text" style="color: #000000;">Probab.Lluvia</span>
+                    </div>
+                    <div class="form-group">
+                                        <button  type="submit" class="btn btn-primary" style="margin-top: 0px;width: 100%;
+    margin-top: -6px;
+    margin-right: 0px;
+    background-color: #034290;
+    border-color: #034290;
+    height: 61px;
+    font-size: 22px;letter-spacing:-2px;border-radius:5px;" onclick="alerta()">Guardar medición</button>
+                    </div>
+                  </div>
+                </form>
+                    <a id="enlace" href="" style="margin-top: 0px;width: 100%;
+    margin-top: -2px;
+    margin-right: 0px;
+    background-color: #22d976;
+    border-color: #22d976;
+    height: 61px;
+    font-size: 24px;border-radius:5px;" target="_blank" class="btn btn-primary" >
+                                    Ver informe
+                                </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+
+
+
+
+<?php $__env->startSection('scripts'); ?>
+
+<script>
+$(document).ready(function() {
+    $('#lista_prospectos').DataTable( {
+        "order": [[ 7, "desc" ]],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+                 ]
+                                   } );
+    //     responsive: {
+    //    details: true
+    //} 
+                          } );
+</script>
+
+<script>
+  
+   function mostrarmodal(id) {
+
+  // $("#usuario_seleccionado").val(id); // leccion10
+  $('#myModalExito').modal('show');
+  //var finca = "https://localhost/encampo/form_editar_finca_agricultor/"+id+"";
+  $.getJSON("form_editar_finca_agricultor/"+id+"",function(data) {
+      var finca=data;
+      $('#id_finca_input').val(finca.id);  $('#nombre_finca_input').val(finca.finca);
+      $('#nombre_finca_input').val(finca.finca);
+      $('#url_report_pronostico').val(finca.urlreport);
+      $('#finca_name').html(finca.finca);
+      var URL="https://datastudio.google.com/reporting/bdf40963-26f9-4d0d-a51f-00ebfc92ce7e/page/rTqnB?params=%7B%22df40%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580" + finca.finca +'%22%7D'.replace(/\"/g, "");
+
+document.getElementById("enlace").setAttribute('href',URL);
+       //var fincalat=0;
+   
+    //$('#fincaLat2').html(fincalat);
+    //$('#pop').html(pop_origen * 100);
+  //console.log(finca);
+  //document.getElementById("fincaLat2").value=fincalat.latitud;
+  //document.getElementById("fincaLon").value=fincalat.longitud;
+  //$.get(finca,function(resul){
+  //$("#myModalExito").html(resul);  //leccion 10
+  //$("#fincaLat").html(finca[0]);
+  //})
+
+  var OPEN_WEATHER_MAP_API_KEY = "d13eb18064cea8bae2ef7ee7c6478111";
+  var lat=finca.latitud;
+  var lon=finca.longitud;
+  $.getJSON("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=metric"  + "&appid=" + OPEN_WEATHER_MAP_API_KEY,function(data) {
+      var temp=(data.daily[0].temp);
+      var uvi=(data.daily[0].uvi);
+      var pop_origen=(data.daily[0].pop);
+      var pob=pop_origen * 100;
+      console.log("MaxTempOne: " + temp.max);
+      console.log("MinTempOne: " + temp.min);
+      console.log("UVI: " + uvi);
+      console.log("pop: " + pop_origen * 100);
+    $('#temp_max').html(temp.max);
+    //$('#temp_max_input').(temp.max);
+    $("#temp_max_input").val(temp.max);
+    //document.getElementById('temp_max_input').innerHTML = temp.max;    
+    $('#temp_min').html(temp.min);
+    $("#temp_min_input").val(temp.min);
+    $('#uvi').html(uvi);
+    $('#uvi_input').val(uvi);
+    $('#pop').html(pop_origen * 100);
+});
+  $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric" + "&lang=es" + "&appid=" + OPEN_WEATHER_MAP_API_KEY,function(data) {
+      console.log("Weather: " + (data.weather[0].description));
+      console.log("icon: " + (data.weather[0].icon));
+      console.log("Pais: " + (data.sys.country));
+      console.log("Ciudad: " + (data.name));
+      console.log("Temp Actual: " + (data.main.temp));
+      console.log("Temp Maxima: " + (data.main.temp_max));
+      console.log("Temp Mínima: " + (data.main.temp_min));
+      console.log("Humidity: " + (data.main.humidity));
+      console.log("Pressure: " + (data.main.pressure));
+      console.log("Temp in F: " + (((data.main.temp-273.15) * 1.8) + 32));
+    var icon=data.weather[0].icon;
+    var iconurl = "https://openweathermap.org/img/wn/" + "02n" + ".png";
+    $('#pais').html(data.sys.country);
+    $('#ciudad').html(data.name);
+    $('#icon').attr('src',iconurl);
+    $('#weather').html(data.weather[0].description);
+    $('#temp_actual').html( (data.main.temp + 0) );
+    $("#tempactual_input").val((data.main.temp + 0));
+    $('#humidity').html( (data.main.humidity + 0) );
+    $("#humidity_input").val((data.main.humidity + 0));
+    $('#pressure').html( (data.main.pressure + 0) );
+    $('#pressure_input').val( (data.main.pressure + 0) );
+    $('#tempF').html( (((data.main.temp-273.15) * 1.8) + 32) );
+    });
+
+    //https://api.openweathermap.org/data/2.5/forecast?lat=3.40556&lon=-76.53239&units=metric&appid=d13eb18064cea8bae2ef7ee7c6478111
+ $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric"  + "&appid=" + OPEN_WEATHER_MAP_API_KEY,function(data) {
+      var wind=data.list[0].wind;
+      var temp_max=(data.list[0].main.temp_max);
+      var temp_min=(data.list[0].main.temp_min);
+      var rain = data.list[0].rain && data.list[0].rain["3h"] || 0
+      console.log("Wind: " + data.list[0].wind);
+      console.log("MaxTemp: " + temp_max);
+      console.log("Rain: " + rain);
+$('#wind').html(wind.speed);
+$('#wind_input').val(wind.speed);
+$('#rain').html(rain);
+$('#rain_input').val(rain);
+    });
+ //SOILAPI
+ //API=6c421d18-f909-11ea-9025-0242ac130002-6c421e6c-f909-11ea-9025-0242ac130002
+
+//const lat= coords.lat;
+//const lon=coords.lng;
+/*const lat1=3.40556;
+const lon1= -76.53239;
+fetch("https://api.stormglass.io/v2/bio/point?lat=${lat}&lng=${lon}&params=soilTemperature", {
+  headers: {
+    'Authorization': '6c421d18-f909-11ea-9025-0242ac130002-6c421e6c-f909-11ea-9025-0242ac130002'
+  }
+}).then((response) => response.json()).then((jsonData) => {
+  // Do something with response data.
+  //.then(result => console.log(result))
+  console.log("SoilT: " + jsonData.hours[0].soilTemperature.noaa);
+   $('#soilTemperature').html(jsonData.hours[0].soilTemperature.noaa);
+  //console.log("SoilT: " + jsonData.meta.dailyQuota);
+});*/
+
+//const lat1 = 58.7984;
+//const lng1 = 17.8081;
+const params = 'soilTemperature';
+
+fetch(`https://api.stormglass.io/v2/bio/point?lat=${lat}&lng=${lon}&params=${params}`, {
+  headers: {
+    'Authorization': '6c421d18-f909-11ea-9025-0242ac130002-6c421e6c-f909-11ea-9025-0242ac130002'
+  }
+}).then((response) => response.json()).then((jsonData) => {
+  // Do something with response data.
+   console.log("SoilT: " + jsonData.hours[0].soilTemperature.noaa);
+   $('#soilTemperature').html(jsonData.hours[0].soilTemperature.noaa);
+   $("#soilTemperature_input").val(jsonData.hours[0].soilTemperature.noaa);
+   
+});
+
+})
+}
+
+</script>
+
+<script>
+function alerta()
+{
+alert('Datos climatológicos guardados correctamente');
+}
+</script>
+
+<style>
+    .color-box {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.break {
+    margin-bottom: 15px!important;
+}
+
+.shadow {
+    background: #F7F8F9;
+    padding: 3px;
+    margin: 10px 0;
+}
+
+.note-icon {
+    background: #47ADE0;
+}
+
+.info-tab {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    float: left;
+    margin-left: -23px;
+}
+
+.day-wethear-item {
+    float: left;
+    padding: 25px 0 20px;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    width: 33.32%;
+    line-height: 13px;
+}
+
+    
+</style>
+
+
+<?php $__env->stopSection(); ?>
+
+     
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

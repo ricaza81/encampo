@@ -1,0 +1,392 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?11ie26');
+  src:  url('../fonts/icomoon.eot?11ie26#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?11ie26') format('truetype'),
+    url('../fonts/icomoon.woff?11ie26') format('woff'),
+    url('../fonts/icomoon.svg?11ie26#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-search:before {
+  content: "\e986";
+  color: #00374A;
+  font-size: 20px;
+  margin-left: 3px;
+}
+.icon-circle-right:before {
+  content: "\ea42";
+  font-size: 30px;
+  color: #00374A;
+}
+.icon-circle-left:before {
+  content: "\ea44";
+  font-size: 30px;
+  color: #00374A;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans",sans-serif;
+  font-size: 14px;
+}
+
+.screenLoad{
+  height: 100%;
+  width: 100%;  
+  background-color: white;
+  position: absolute;   
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+.screenLoad span h1{
+  color: #00374A;
+  text-transform: uppercase;
+}
+.contenedor{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.conteMapa{
+  height: 100%;
+  width: 100%;
+ 
+}
+#menuPronosticos {
+  
+  
+  
+  /* position: absolute; */
+  padding: 10px;
+  
+
+  
+}
+#menuPronosticos select {
+  width: 325px;
+  border: 1px solid #00374A;
+  background: #00374A;       
+  color: white;
+  background-image: url(../img/button_down.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  font-size: 15px;
+  padding: 10px 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.capaListado select {
+  width: 325px;
+  border: 1px solid #00374A;
+  background: #00374A;       
+  color: white;
+  background-image: url(../img/button_down.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  font-size: 15px;
+  padding: 10px 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.pronosticosNal{
+  color: white;
+  border: 1px solid #00374A;
+  background: #00374A;  
+  font-size: 15px;
+  padding: 8px 5px;  
+  
+  margin-bottom: 5px;
+  text-align: center;
+}
+#map {
+  height: 100%;
+  z-index: 0;
+}
+a:link{
+  text-decoration: none;
+}
+
+.pronostico{
+  height: 98%;  
+  padding: 5px 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow:  0px 0px 4px 0px #CCC;
+  
+  
+}
+.contePronostico{
+  height: 100%; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    
+}
+
+.pronosticoTitulo{
+ 
+  font-weight: bold;
+  color: #00374A;
+  text-transform: uppercase;
+}
+.capaTitulo{
+
+ 
+  font-weight: bold;
+  color: #00374A;
+  text-transform: uppercase;
+}
+.pronosticoListado{
+  height: 50%;
+  border: 1px solid #00374A;
+  overflow: auto;
+  padding: 5px;  
+  margin-bottom: 5px;
+}
+.nomenclatura{
+  margin-top: 10px;
+  border: 1px solid #00374A;  
+  padding: 1px;
+  width: 40%;
+}
+
+.municipioAfectado{
+
+}
+.municipioAfectado a:link{
+  text-decoration: none;
+  color: black;
+
+}
+.searchBar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;  
+  margin-bottom: 10px;  
+   width: 100% !important;
+}
+.searchBar input[type="text"]{
+  width: 96% !important;
+  padding: 10px 5px;
+  
+}
+.cerrar{
+  text-align: right;
+}
+
+.tituloPronosticoDetalle{
+  text-align: center;
+  color: #00374A;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+
+}
+.datoProno{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.datoProno .icon {
+  background-color: #0fb18ced;
+  padding: 5px;
+  margin-right: 5px;
+}
+.datoProno .icon img{
+  width: 60px;
+}
+.textAlerta{
+  display: flex;
+  flex-direction: column;
+}
+.textAlerta div span{
+  color: #00374A;
+  font-weight: bold;
+}
+.fenomeno{
+  margin-bottom: 10px;
+}
+.nivel{
+  margin-bottom: 10px;
+}
+.encabezado{
+  margin-bottom: 10px;
+}
+#content{
+  font-size: 10px;
+  font-weight: bold;
+}
+.foot{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  
+  margin-top: 10px;
+}
+.foot img{
+  width: 80px;
+}
+.pronoHoy{
+    display: none;
+    flex-direction: column;
+    width: 705px;
+    overflow-x: scroll;
+}
+.pronoTotal{
+    margin-top: 5px;
+    flex-direction: column;    
+    display: none; 
+    height: 550px;
+    overflow-x: hidden;  
+    overflow-y: hidden;  
+}
+.pronoTotalMarino{
+    margin-top: 5px;
+    flex-direction: column;    
+    display: none; 
+    height: 400px;
+    overflow-x: hidden;  
+    overflow-y: hidden;
+}
+.prono{
+    margin-top: 10px;
+    display: none;
+    flex-direction: row;   
+
+}
+
+.itemsPronoHoy{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 13px;  
+
+}
+.pronosticoDias{
+  display: flex;
+  flex-direction: column;
+}
+.pronosticoDiasMarino{
+  display: none;
+}
+.pronoHeader{
+    
+    text-align: left;
+    color: #00374A;    
+    font-weight: bold;
+    padding: 3px;
+    width: 100%;
+   
+
+}
+.horaProno{
+    background-color: #00374A;
+    color: white;
+    padding: .15em;
+    
+}
+.temperatura{
+    background-color: #00374A;
+    color: white;
+    padding: .15em;
+    
+}
+.icono{
+    background-color: #0fb18ced;
+    
+}
+.icono img{
+    width: 35px;
+}
+.selectPYA{
+  background-color: #00374A;
+  
+  color: white;
+  padding: 5px;
+}
+.pronoFila{
+    display: none;
+    flex-direction: row;
+    margin-bottom: 5px;
+    font-size: 13px;
+    overflow-x: scroll;  
+    overflow-y: hidden;  
+}
+.pronoFilaMarino{
+    display: none;
+    flex-direction: column;
+    margin-bottom: 5px;
+    font-size: 13px;
+    overflow-x: hidden;  
+    overflow-y: hidden;  
+}
+.dias{
+  margin-top: 5px;
+}
+.itemProno{
+   text-align: center;
+   /* height: 97px; */
+   display: flex;
+   flex-direction: column;
+   margin-right: 1px;
+}
+.pronosticosLista{
+   overflow-y: hidden;
+   overflow-x: hidden;
+}
+.conteCiudadICO{
+  background-color: #1D4B66;
+  width: 25px !important;
+  height: 25px !important;
+  border: 1px solid white;
+}
+.conteCiudadICO img{
+  width: 25px;
+  height: 25px;
+
+}
+/*
+.leaflet-container .leaflet-overlay-pane svg, .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer{
+  background-color: #1D4B66;
+}
+*/

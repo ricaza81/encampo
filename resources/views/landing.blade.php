@@ -419,7 +419,7 @@
                 <div class="col-lg-5">
                     <div class="prosess-tabs-inner wow fadeInRight">
                         <h2 class="title" style="color:#fff">
-                            Lleva el control de tu asistencia técnica en una sola aplicación
+                            Mide las principales variables meteorológicas de tu finca o ubicación geográfica.
                         </h2>
 
                         <div class="norebro-tabs-sc tab-box tabs-left" data-appxbe-tab-box="true" style="padding-bottom:129px;">
